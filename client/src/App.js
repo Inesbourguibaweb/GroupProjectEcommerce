@@ -7,8 +7,6 @@ import Dashboard from './components/Dashboard';
 import ProductDetail from './components/ProductDetail';
 import { UserContext } from './context/UserContextProvider'
 import axios from 'axios';
-import NavBarEcommerce from './components/NavBarEcommerce';
-import Carroussel from './components/Carroussel';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import AddProduct from './components/AddProduct';
@@ -17,6 +15,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const { state, dispatch } = useContext(UserContext);
 
+  // To ensure that data are secure, the user should login to have access to routes
   useEffect(() => {
     axios.post('http://localhost:8000/api/users/isLoggedIn', {}, { withCredentials: true })
       .then((user) => {
@@ -37,15 +36,20 @@ function App() {
   return (
     <div className="App">
         <Routes>
-          <Route path="/" element={<LogRegister isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+          {/* -----------1ere page  ----------*/}
+          <Route path="/" element={<LogRegister isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} /> 
+          {/* -----------Regiter Form  ----------*/}
           <Route path="/register" element={<RegisterForm isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+          {/* -----------Login Form  ----------*/}
           <Route path="/login" element={<LoginForm isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+          {/* -----------Dashboard to display all products  ----------*/}
           <Route path="/products/" element={<Dashboard isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+           {/* -----------Display  product detail  ----------*/}
           <Route path='/products/:id/' element={<ProductDetail isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+          {/* -----------For pour ajouter un produit ----------*/}
           <Route path="/products/addproduct" element={<AddProduct isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+          {/* -----------Erreur lorsue le user veut accéder à une page inexistente----------*/}
           <Route path='*' element={<NotFound />} />
-          <Route path="/products/navbar" element={<NavBarEcommerce/>}/>
-          <Route path="/products/carroussel" element={<Carroussel/>}/>
         </Routes>
     </div>
   );

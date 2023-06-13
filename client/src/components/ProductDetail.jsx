@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import WhoLikeProduct from './WhoLikeProduct';
 import UpdateProduct from './UpdateProduct';
 import axios from 'axios';
 import { UserContext } from '../context/UserContextProvider';
@@ -28,19 +27,9 @@ const ProductDetail = () => {
 
   return (
     <div >
-      {/* <nav className="navbar navbar-expand-lg bg-primary-subtle rounded-3 justify-content-center">
-        <div className="container-fluid">
-          <h1>Welcome, {state.user && state.user.firstName}!</h1>
-          <button className="btn btn-danger" onClick={logout}>
-            Log Out
-          </button>
-          <Link to="/Products" className="btn btn-outline-success">Home</Link>
-        </div>
-      </nav> */}
       <Navbar />
       <div className="row">
         <UpdateProduct />
-        <WhoLikeProduct />
       </div>
     </div>
   );

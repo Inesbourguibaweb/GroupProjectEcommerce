@@ -69,8 +69,6 @@ const Navbar = ({ setIsLoggedIn }) => {
                 <button className="nav-btn nav-close-btn" onClick={showNabar} >
                     <FaTimes/>
                 </button>
-                
-                
             </nav>
             <button className="nav-btn" onClick={showNabar}>
                 <FaBars />

@@ -3,13 +3,22 @@ import RegisterForm from './RegisterForm'
 import LoginForm from './LoginForm'
 import { UserContext } from '../context/UserContextProvider'
 import { useNavigate } from 'react-router-dom'
-import NavBarEcommerce from './NavBarEcommerce'
+// import NavBarEcommerce from './NavBarEcommerce'
 import Carroussel from './Carroussel'
+import {FaBars, FaTimes } from 'react-icons/fa'
+import { Link } from "react-router-dom";
+import { useRef } from "react";
+import "../Styles/main.css";
 
 const LogRegister = (props) => {
   const { state } = useContext(UserContext);
   const navigate = useNavigate();
   const {isLoggedIn, setIsloggedIn}=props;
+
+  const navRef = useRef();
+    const showNabar = () => {
+        navRef.current.classList.toggle("responsive_nav")
+    }
 
   useEffect(()=>{
     console.log("from logRegister",state);
@@ -18,10 +27,23 @@ const LogRegister = (props) => {
 
   return (
     <div >
-        <NavBarEcommerce />
+        {/* -----------NavBar--------------- */}
+        <header>
+            <h3>Logo</h3>
+            <nav ref={navRef}>
+                <Link>Home</Link>
+                <Link>About</Link>
+                <Link>Contact us</Link>
+                <button className="nav-btn nav-close-btn" onClick={showNabar} >
+                    <FaTimes/>
+                </button>
+            </nav>
+            <button className="nav-btn" onClick={showNabar}>
+                <FaBars />
+            </button>
+            <Link to='/login'><button className="nav-btn-login" > SignUp|Login </button> </Link>
+        </header>
       <div className='row column-gap-3' >
-          {/* <RegisterForm isLoggedIn={isLoggedIn} setIsloggedIn={setIsloggedIn} />
-          <LoginForm  isLoggedIn={isLoggedIn} setIsloggedIn={setIsloggedIn} /> */}
           <Carroussel />
       </div>
     </div>

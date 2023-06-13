@@ -1,13 +1,10 @@
 import Carousel from 'react-bootstrap/Carousel';
 import carroussel1 from '../assets/carrousel1.jpg'
-import carroussel2 from '../assets/carroussel2.jpg'
-import NavComponent from './NavComponenet';
-import NavBarEcommerce from './NavBarEcommerce'
+
 
 function Carroussel() {
   return (
     <>
-   {/* <NavBarEcommerce /> */}
     <Carousel className='carroussel'>
       <Carousel.Item >
         <img

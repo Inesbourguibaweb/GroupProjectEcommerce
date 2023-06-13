@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import AddProduct from './AddProduct';
 import DisplayProducts from './DisplayProducts';
 import Navbar from './Navbar';
 import { UserContext } from '../context/UserContextProvider';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "../Styles/main.css";
+
 
 const Dashboard = ({ isLoggedIn, setIsLoggedIn }) => {
   //Lift States using useContext
