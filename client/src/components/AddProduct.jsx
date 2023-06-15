@@ -16,7 +16,7 @@ const AddProduct = () => {
     title: '',
     description: '',
     image:'',
-    Category:'',
+    category:'',
     price:''
   });
 
@@ -105,6 +105,20 @@ const AddProduct = () => {
           />
           {errors.description && (
             <p className="text-danger">{errors.image.message}</p>
+          )}
+        </div>
+        <div className="form-group">
+          <label className="form-label">Choose Category</label>
+          <select name="category" >
+            <option value="cosmetic">cosmetic</option>
+            <option value="vehicle">vehicle</option>
+            <option value="laptop">laptop</option>
+            <option value="phone">phone</option>
+            <option value="accessories">accessories</option>
+            <option value="games">games</option>
+          </select>
+          {errors.category && (
+            <p className="text-danger">{errors.category.message}</p>
           )}
         </div>
         <div className="form-group">

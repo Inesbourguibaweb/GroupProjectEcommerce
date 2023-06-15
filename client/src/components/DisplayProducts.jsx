@@ -61,7 +61,7 @@ const DisplayProducts = (props) => {
               key={index}
               style={{ width: '18rem' }}
             >
-              <Card.Img variant="top" src={product.image}/>
+              <Card.Img variant="top" src={product.image} style={{width:'200px', height:'200px'}}/>
               <Card.Body>
               <Card.Title>
                 <Link to={`/products/${product._id}`} className="card-title">

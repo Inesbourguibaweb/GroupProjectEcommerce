@@ -15,9 +15,9 @@ const ProductSchema = new mongoose.Schema({
         required: [true, "Title is required"],
         minLength: [3, "Title must be at least 3 characters"]
     },
-    Category:{
+    category:{
         type: String,
-        enum: ["cosmetic", "vehicle", "laptop", "phone", "accessories", "games"]
+        // enum: ["cosmetic", "vehicle", "laptop", "phone", "accessories", "games"]
     },
     description: {
         type: String,

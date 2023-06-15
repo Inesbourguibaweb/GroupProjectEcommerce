@@ -8,7 +8,6 @@ import { useRef } from "react";
 import "../Styles/main.css";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
 import { MdAddShoppingCart } from "react-icons/md";
 
 const Navbar = ({ setIsLoggedIn }) => {
@@ -57,15 +56,13 @@ const Navbar = ({ setIsLoggedIn }) => {
 
   return (
     <>
-      <Container fluid>
       <header>
-            <h1>Logo</h1>
+        <Link to={'/'} ><h1>Logo</h1></Link> 
             <h3>
             Welcome, {state.user && state.user.firstName}!
             </h3>
             <nav ref={navRef} 
             style={{ maxHeight: '100px', display:'flex'}}>
-            
                 <button className="nav-btn nav-close-btn" onClick={showNabar} >
                     <FaTimes/>
                 </button>
@@ -73,7 +70,6 @@ const Navbar = ({ setIsLoggedIn }) => {
             <button className="nav-btn" onClick={showNabar}>
                 <FaBars />
             </button>
-            
             <div style={{ display:'flex'}}>
             <Form.Control type='search' placeholder="Search"/>
             <Button variant="outline-success">Search</Button>
@@ -84,7 +80,6 @@ const Navbar = ({ setIsLoggedIn }) => {
             </button>
             <button className="nav-btn-login" onClick={logout}> Logout</button>
         </header>
-        </Container>
     </>
       
   );
