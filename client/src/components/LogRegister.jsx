@@ -1,9 +1,6 @@
 import React,{ useContext, useEffect } from 'react'
-import RegisterForm from './RegisterForm'
-import LoginForm from './LoginForm'
 import { UserContext } from '../context/UserContextProvider'
 import { useNavigate } from 'react-router-dom'
-// import NavBarEcommerce from './NavBarEcommerce'
 import Carroussel from './Carroussel'
 import {FaBars, FaTimes } from 'react-icons/fa'
 import { Link } from "react-router-dom";
@@ -33,7 +30,7 @@ const LogRegister = (props) => {
             <nav ref={navRef}>
                 <Link>Home</Link>
                 <Link>About</Link>
-                <Link>Contact us</Link>
+                <Link to={"/contactus"}>Contact us</Link>
                 <button className="nav-btn nav-close-btn" onClick={showNabar} >
                     <FaTimes/>
                 </button>

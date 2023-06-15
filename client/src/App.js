@@ -10,6 +10,8 @@ import axios from 'axios';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import AddProduct from './components/AddProduct';
+import  ContactUs from './components/ContactUs';
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -48,9 +50,14 @@ function App() {
           <Route path='/products/:id/' element={<ProductDetail isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
           {/* -----------For pour ajouter un produit ----------*/}
           <Route path="/products/addproduct" element={<AddProduct isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
-          {/* -----------Erreur lorsue le user veut accéder à une page inexistente----------*/}
+          {/* -----------Contact us----------*/}
+          <Route path='/contactus' element={ <ContactUs />  } />
+
+          {/* -----------Erreur lorsque le user veut accéder à une page inexistente----------*/}
           <Route path='*' element={<NotFound />} />
+          
         </Routes>
+      
     </div>
   );
 }
