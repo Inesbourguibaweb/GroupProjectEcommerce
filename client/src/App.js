@@ -11,6 +11,7 @@ import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import AddProduct from './components/AddProduct';
 import  ContactUs from './components/ContactUs';
+import About from './components/About';
 
 
 function App() {
@@ -52,10 +53,10 @@ function App() {
           <Route path="/products/addproduct" element={<AddProduct isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
           {/* -----------Contact us----------*/}
           <Route path='/contactus' element={ <ContactUs />  } />
-
+          {/* -----------About us----------*/}
+          <Route path='/about' element={ <About />  } />
           {/* -----------Erreur lorsque le user veut accéder à une page inexistente----------*/}
           <Route path='*' element={<NotFound />} />
-          
         </Routes>
       
     </div>

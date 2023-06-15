@@ -17,7 +17,7 @@ const NavBarEcommerce = () => {
             <h3>Logo</h3>
             <nav ref={navRef}>
                 <Link to={'/'}>Home</Link>
-                <Link>About</Link>
+                <Link to={'/about'}>About</Link>
                 <Link to="/contactus">Contact us</Link>
                 <button className="nav-btn nav-close-btn" onClick={showNabar} >
                     <FaTimes/>
