@@ -212,7 +212,7 @@ const RegisterForm = ({ setIsLoggedIn }) => {
                         </div>
                         <div className="form-group">
                           {errors.serverError && (
-                            <p className="text-danger">{errors.serverError}</p>
+                            <p className="text-danger">{errors.serverError.message}</p>
                           )}
                           <div className="pt-1 mb-4">
                             <button className="btn btn-dark btn-lg btn-block" type="submit">Rgister</button>

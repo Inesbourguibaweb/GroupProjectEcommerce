@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserContext } from "../context/UserContextProvider";
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 
@@ -65,7 +64,7 @@ const DisplayProducts = (props) => {
                 {product.description}
               </Card.Text>
               
-              {state.user.firstName === product.addedBy && (
+              {state.user === product.addedBy && (
                       <div>
                         <button
                           className="btn btn-danger"
