@@ -114,11 +114,12 @@ const UpdateProduct = () => {
   const isUserUploader = state.user?.firstName === productInfo.addedBy; // To verify if the user is the one who added the product
 
   return (
-    <div className="col-md-5 offset-1">
-      <div className="card">
+    <div className=" d-flex" 
+    style={{flexDirection: 'column', justifyContent:'center', alignItems:'center', backgroundColor:'#eceaef'}}>
+      <img className="col-4" src={productInfo.image} style={{width:'200px', height:'200px', borderRadius: "1rem"}}/> 
         <div className="card-body">
           {isUserUploader ? (
-            <form onSubmit={updateproduct}>
+            <form onSubmit={updateproduct} style={{width:'300px'}} >
               <div>
                 <label className="text-start">Title</label>
                 <br />
@@ -135,6 +136,14 @@ const UpdateProduct = () => {
                   <p className="text-danger">{errors.description}</p>
                 )}
               </div>
+              <div>
+                <label className="text-start">Price</label>
+                <input className="form-control" type="number" name="price" value={productInfo.price}
+                 onChange={changeHandler} />
+                {errors.price && (
+                  <p className="text-danger">{errors.price}</p>
+                )}
+              </div>
               <button type="submit" className="btn btn-warning">Update</button>
               <button className="btn btn-danger" style={{ marginLeft: "15px" }} onClick={() => deleteproduct(id)}>
                 Delete
@@ -143,15 +152,17 @@ const UpdateProduct = () => {
           ) : (
             <>
               <h1 className="card-title">{productInfo.title}</h1>
-              <p className="text-start">Description: {productInfo.description}</p>
+              <p className="text-start"><strong>Description: </strong> {productInfo.description}</p>
+              <p className="text-start">
+                  <strong>Price:</strong> {productInfo.price}
+              </p>
+              <p className="text-start">Added by: {productInfo.addedBy}</p>
+              <p className="text-start">Added on: {formatDate(productInfo.createdAt)}</p>
+              <button className="btn btn-primary"> Buy </button>
             </>
           )}
-          <p className="text-start">Added by: {productInfo.addedBy}</p>
-          <p className="text-start">Added on: {formatDate(productInfo.createdAt)}</p>
-          <p className="text-start">Last updated on: {formatDate(productInfo.updatedAt)}</p>
         </div>
       </div>
-    </div>
   );
 };
 

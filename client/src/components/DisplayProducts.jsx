@@ -26,30 +26,23 @@ const DisplayProducts = (props) => {
         console.log(err);
       });
   }, []);
-  // Function can user like a product
-  const addToFavorites = (productId) => {
-    axios
-      .put(`http://localhost:8000/api/products/${productId}/favorite`, null, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res.data);
-        setProducts((prevproducts) => {
-          return prevproducts.map((product) => {
-            if (product._id === productId) {
-              return {
-                ...product,
-                likedBy: [...product.likedBy, state.user.firstName],
-              };
-            }
-            return product;
-          });
+    // Function to cancel a product
+    const cancelProduct = (productId) => {
+      axios
+        .delete(`http://localhost:8000/api/products/${productId}`, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          console.log(res.data);
+          // Remove the canceled product from the products state
+          setProducts((prevProducts) =>
+            prevProducts.filter((product) => product._id !== productId)
+          );
+        })
+        .catch((err) => {
+          console.log(err);
         });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    };
 
   return (
     <>
@@ -72,22 +65,22 @@ const DisplayProducts = (props) => {
                 {product.description}
               </Card.Text>
               
-              {state.user && (
-                <div>
-                  {!product.likedBy.includes(state.user.firstName) ? (
-                    <button
-                      className="btn btn-info"
-                      onClick={() => addToFavorites(product._id)}
-                    >
-                      Buy
-                    </button>
-                    
-                    
-                  ) : (
-                    <p>this one is one of your favorites.</p>
-                  )}
-                </div>
-              )}
+              {state.user.firstName === product.addedBy && (
+                      <div>
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => cancelProduct(product._id)}
+                        >
+                          Delete
+                        </button>
+                        <button
+                          className="btn btn-primary"
+                        >
+                          Update
+                        </button>
+                      </div>
+                    )}
+
               <Card.Footer>
                 <small className="text-muted">added by {product.addedBy}</small>
               </Card.Footer>

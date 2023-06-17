@@ -47,10 +47,10 @@ const ContactUs = () => {
                         <label className="form-label">Email</label>
                         <input type="email" name="user_email" className="form-control" />
                     </div>
-                    <div className="form-group">
-                        <label className="form-label">Message</label>
-                        <textarea name="message" className="form-control" rows="3" />
-                    </div>
+                      <div className="form-group">
+                          <label className="form-label">Message</label>
+                          <textarea name="message" className="form-control" rows="3" />
+                      </div>
                         <input className="btn btn-dark btn-lg btn-block" type="submit" value="Send" />
                     </form>
                     </div>
