@@ -19,6 +19,10 @@ const AddProduct = () => {
     category:'',
     price:''
   });
+  const handlePress = () => {
+   
+    navigate('/products');
+    };
 
   useEffect(() => {
     axios
@@ -138,6 +142,9 @@ const AddProduct = () => {
         <div className="form-group">
           <button type="submit" className="btn btn-primary mt-3">
             Add a product
+          </button>
+          <button type="submit" className="btn btn-warning mt-3" onClick={handlePress}>
+            Back
           </button>
         </div>
       </form>
