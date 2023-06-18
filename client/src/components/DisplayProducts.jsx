@@ -83,7 +83,7 @@ const DisplayProducts = (props) => {
                 </div>)}
               {state.user && (
                 <div>
-                  {state.user === product.addedBy && (
+                  {state.user.firstName === product.addedBy && (
                       <div>
                         <button
                           className="btn btn-danger"

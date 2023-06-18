@@ -158,7 +158,6 @@ const UpdateProduct = () => {
               </p>
               <p className="text-start">Added by: {productInfo.addedBy}</p>
               <p className="text-start">Added on: {formatDate(productInfo.createdAt)}</p>
-              <button className="btn btn-primary"> Buy </button>
             </>
           )}
         </div>
