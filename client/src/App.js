@@ -10,14 +10,14 @@ import axios from 'axios';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
 import AddProduct from './components/AddProduct';
-import  ContactUs from './components/ContactUs';
+import ContactUs from './components/ContactUs';
 import About from './components/About';
+import Cart from './components/Cart';
 
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const { state, dispatch } = useContext(UserContext);
-
   // To ensure that data are secure, the user should login to have access to routes
   useEffect(() => {
     axios.post('http://localhost:8000/api/users/isLoggedIn', {}, { withCredentials: true })
@@ -55,6 +55,8 @@ function App() {
           <Route path='/contactus' element={ <ContactUs />  } />
           {/* -----------About us----------*/}
           <Route path='/about' element={ <About />  } />
+          {/* -----------Cart----------*/}
+          <Route path="/products/cart" element={<Cart isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
           {/* -----------Erreur lorsque le user veut accéder à une page inexistente----------*/}
           <Route path='*' element={<NotFound />} />
         </Routes>

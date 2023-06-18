@@ -17,6 +17,7 @@ app.use(express.json(),express.urlencoded({ extended: true }));
 
 require('./routes/user.routes')(app);
 require('./routes/product.routes')(app);
+require('./routes/cart.routes')(app);
 
 app.listen(PORT, () => {
     console.log(PORT, `Listening at Port ${PORT}`)

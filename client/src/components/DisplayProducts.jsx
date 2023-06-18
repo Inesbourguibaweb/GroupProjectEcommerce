@@ -8,7 +8,7 @@ import CardGroup from 'react-bootstrap/CardGroup';
 
 const DisplayProducts = (props) => {
   const { products, setProducts } = props;
-  const { state } = useContext(UserContext);
+  const { state, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,30 +45,14 @@ const DisplayProducts = (props) => {
   };
 
 
-  // Function can user like a product
-  const addToFavorites = (productId) => {
-    axios
-      .put(`http://localhost:8000/api/products/${productId}/favorite`, null, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res.data);
-        setProducts((prevproducts) => {
-          return prevproducts.map((product) => {
-            if (product._id === productId) {
-              return {
-                ...product,
-                likedBy: [...product.likedBy, state.user.firstName],
-              };
-            }
-            return product;
-          });
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+ // Add to cart function from usecontext
+ const addToCart = (product) => {
+  dispatch({
+    type: 'ADD_TO_CART',
+    payload: product,
+  });
+};
+
 
   return (
     <>
@@ -90,22 +74,16 @@ const DisplayProducts = (props) => {
               <Card.Text>
                 {product.description}
               </Card.Text>
-              
+              {state.user.firstName !== product.addedBy && (<div>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => addToCart(product)}>
+                    Add to cart
+                  </button>
+                </div>)}
               {state.user && (
                 <div>
-                  {/* {!product.likedBy.includes(state.user.firstName) ? (
-                    <button
-                      className="btn btn-info"
-                      onClick={() => addToFavorites(product._id)}
-                    >
-                      Buy
-                    </button>
-                    
-                    
-                  ) : (
-                    <p>this one is one of your favorites.</p>
-                  )} */}
-                   {state.user.firstName === product.addedBy && (
+                  {state.user === product.addedBy && (
                       <div>
                         <button
                           className="btn btn-danger"
@@ -120,12 +98,11 @@ const DisplayProducts = (props) => {
                         </button></Link> 
                       </div>
                     )}
-
                 </div>
               )}
-              
               <Card.Footer>
                 <small className="text-muted">added by {product.addedBy}</small>
+                
               </Card.Footer>
 
               </Card.Body>

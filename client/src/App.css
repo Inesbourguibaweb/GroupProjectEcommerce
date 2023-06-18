@@ -44,3 +44,31 @@
 
 
 /* ================================ */
+
+/* ==============Cart Style================== */
+
+.add-product-form .form-group{
+  margin-left: auto;
+  margin-right: auto;
+}
+.card-group {
+  width: fit-content !important;
+  margin-left: auto;
+  margin-right: auto;
+  .card {
+    margin-right: 1rem;
+  }
+}
+.cartItem {
+  width: fit-content;
+}
+.quantity-group {
+  align-items: center !important;
+  justify-content: center !important;
+}
+.quantity-group div {
+  width: 60px;
+}
+.alert {
+  opacity: 1 !important;
+}

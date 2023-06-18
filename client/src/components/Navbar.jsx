@@ -13,6 +13,7 @@ import { MdAddShoppingCart } from "react-icons/md";
 const Navbar = ({ setIsLoggedIn }) => {
   const { state, dispatch } = useContext(UserContext);
   const navigate = useNavigate();
+  const cart = state.cart;
   const navRef = useRef();
     const showNabar = () => {
         navRef.current.classList.toggle("responsive_nav")
@@ -75,9 +76,15 @@ const Navbar = ({ setIsLoggedIn }) => {
             <Button variant="outline-success">Search</Button>
             </div>
             <Link to='/products/addproduct'><button className="nav-btn-sell"  >Sell a product</button> </Link>
-            <button className="nav-btn-cart" onClick={showNabar} >
+            <Link to={'/products/cart'} ><button className="nav-btn-cart" onClick={showNabar} >
                 <MdAddShoppingCart />
+                {cart.length > 0 && (
+                <div className="badge">
+                  {cart.length}
+                </div>
+              )}
             </button>
+            </Link> 
             <button className="nav-btn-login" onClick={logout}> Logout</button>
         </header>
     </>
