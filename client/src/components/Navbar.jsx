@@ -58,7 +58,7 @@ const Navbar = ({ setIsLoggedIn }) => {
   return (
     <>
       <header>
-        <Link to={'/'} ><h1>Logo</h1></Link> 
+        <Link style={{textDecoration:'none', color:'#007580'}} to={'/'} ><h1  >Logo</h1></Link> 
             <h3>
             Welcome, {state.user && state.user.firstName}!
             </h3>

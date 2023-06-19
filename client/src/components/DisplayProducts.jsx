@@ -74,14 +74,14 @@ const DisplayProducts = (props) => {
               <Card.Text>
                 {product.description}
               </Card.Text>
-              {state.user.firstName !== product.addedBy && (<div>
+              {state.user && state.user.firstName && state.user.firstName !== product.addedBy && (<div>
                   <button
                     className="btn btn-primary"
                     onClick={() => addToCart(product)}>
                     Add to cart
                   </button>
                 </div>)}
-              {state.user && (
+              {state.user && state.user.firstName && (
                 <div>
                   {state.user.firstName === product.addedBy && (
                       <div>
@@ -104,7 +104,6 @@ const DisplayProducts = (props) => {
                 <small className="text-muted">added by {product.addedBy}</small>
                 
               </Card.Footer>
-
               </Card.Body>
             </Card>
           )

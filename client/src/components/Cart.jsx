@@ -60,8 +60,7 @@ const Cart = ({ isLoggedIn, setIsLoggedIn }) => {
             return (
               <Card
                 key={index}
-                className="cartItem"
-              >
+                className="cartItem">
                 <Card.Img variant="top" src={product.image} />
                 <Card.Body>
                   <Card.Title>

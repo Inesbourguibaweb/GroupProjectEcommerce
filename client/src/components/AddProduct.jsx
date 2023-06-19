@@ -68,7 +68,8 @@ const AddProduct = () => {
   return (
     <div >
       <Navbar />
-      <form onSubmit={submitHandler}>
+      <div style={{display:'flex', justifyContent:'center', alignItems:'center'}} >
+      <form onSubmit={submitHandler} style={{width:'500px'}}>
         <h3 className="text-center">Add a New product</h3>
         <div className="form-group">
           <label className="form-label">Title:</label>
@@ -148,6 +149,7 @@ const AddProduct = () => {
           </button>
         </div>
       </form>
+      </div>
     </div>
   );
 };
